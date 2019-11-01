@@ -24,10 +24,10 @@ def proof_of_work(last_proof):
     start = timer()
 
     print("Searching for next proof")
-    proof = 10000000
+    proof = 50000000
     #  TODO: Your code here
     while valid_proof(last_proof, proof) is False:
-        proof += 5
+        proof += 7
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
 
@@ -45,7 +45,7 @@ def valid_proof(last_hash, proof):
     guess_hash = hashlib.sha256(guess).hexdigest()
     new_proof = f'{proof}'.encode()
     guess_proof = hashlib.sha256(new_proof).hexdigest()
-    return guess_hash[-6:] == guess_proof[:6]
+    return str(guess_hash)[-6:] == str(guess_proof)[:6]
 
 
 if __name__ == '__main__':
