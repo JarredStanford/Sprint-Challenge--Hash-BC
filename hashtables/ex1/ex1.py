@@ -15,9 +15,9 @@ def get_indices_of_item_weights(weights, length, limit):
 
 
     for index, weight in enumerate(weights):
-        hash_table_insert(ht, weight, index)
         if hash_table_retrieve(ht, (limit-weight)) is not None:
-            return [hash_table_retrieve(ht, weight), hash_table_retrieve(ht, (limit - weight))]
+            return [index, hash_table_retrieve(ht, (limit - weight))]
+        hash_table_insert(ht, weight, index)
     
 
     return None
